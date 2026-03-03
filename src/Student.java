@@ -1,31 +1,19 @@
-public class Student {
+public class Student implements Comparable<Student>{
 
-    private String name ;
+    private int age ;
     private double gpa ;
-    private Address address ;
-    private static int count = 0 ;
 
-//    // default constructor - setting values to defaults
-//    public Student() {
-//        name = "none" ;
-//        gpa = 0.0 ;
-//    }
-
-
-    // non-default constructor - initializing attributes to objects
-    public Student(String name, double gpa, Address address) {
-        this.name = name;
+    public Student(int age, double gpa) {
+        this.age = age;
         this.gpa = gpa;
-        this.address = address;
-        count = count + 1 ;
     }
 
-    public String getName() {
-        return name;
+    public int getAge() {
+        return age;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setAge(int age) {
+        this.age = age;
     }
 
     public double getGpa() {
@@ -36,24 +24,15 @@ public class Student {
         this.gpa = gpa;
     }
 
-    public Address getAddress() {
-        return address;
-    }
-
-    public void setAddress(Address address) {
-        this.address = address;
-    }
-
     @Override
     public String toString() {
         return "Student{" +
-                "name='" + name + '\'' +
+                "age=" + age +
                 ", gpa=" + gpa +
-                ", address=" + address +
                 '}';
     }
 
-    public static int getCount() {
-        return count ;
+    public int compareTo(Student student) {
+        return this.age - student.age;
     }
 }

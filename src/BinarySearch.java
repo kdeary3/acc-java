@@ -1,19 +1,23 @@
 public class BinarySearch {
     public static void main(String[] args) {
 
-        int[] arr1 = {1,2,3,4,5,6,7,10,45,66,88,99,102,304,506,708,909} ;
 
-        int current ;
+        int[] arr1 = {1,2,3,4,5,55,67,88,123,435,456,567,678,789,1234,2345,3546,4674,6678};
 
-        int length = arr1.length / 2;
+        int low = 0;
+        int high = arr1.length-1;
+        int value = 123 ;
 
-        int start =  arr1[length];
-
-        for (int i = 0; i < arr1.length; i++) {
-            if (arr1[i] < start) {
-                int[] arr2 ;
+        while(low <= high){
+            int mid = (low+high)/2;
+            if (arr1[mid] == value){
+                System.out.println(arr1[mid] + " -- found");
+                return ;
             }
+            if(arr1[mid] > value) high = mid - 1;
+            else low = mid + 1;
         }
 
+        System.out.println("not found");
     }
 }

@@ -5,7 +5,6 @@ public class RecursiveFibonacciAndFactorial {
         System.out.println(recFib(10));
     }
 
-    // recursion is define
     public static int fact(int n) {
         if (n == 1) return 1 ;
         return n * fact(n - 1) ;

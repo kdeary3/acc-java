@@ -1,4 +1,4 @@
-public class Employee {
+public class Employee2 {
 
     private String name ;
     private double salary ;
@@ -6,7 +6,7 @@ public class Employee {
 
     // Setter
     // constructor (Employee) has to be the same name as the class.
-    public Employee(String name, double salary, String eid) {
+    public Employee2(String name, double salary, String eid) {
         this.name = name ;
         this.salary = salary ;
         this.eid = eid ;

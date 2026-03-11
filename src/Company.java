@@ -9,28 +9,29 @@ public class Company {
 
     public static void display() {
         Scanner userInput = new Scanner(System.in);
-        int menuChoice = 0 ;
-        ArrayList<Employee> employees = new ArrayList<Employee>();
+        ArrayList<Employee> employees = new ArrayList<>();
 
         do {
-            System.out.println("1 - Add Employee");
-            System.out.println("2 - Delete Employee");
-            System.out.println("3 - Report Employees");
-            System.out.println("4 - Report Employees by Salary");
-            System.out.println("5 - Exit Program");
-
+            displayMenu();
             System.out.print("Enter menu choice: ");
-            menuChoice = userInput.nextInt() ;
+            int menuChoice = userInput.nextInt() ;
             switch (menuChoice) {
-                case 1:
-                    addEmployee(employees);
-                    break ;
+                case 1: addEmployee(employees); break ;
                 case 2: deleteEmployee(employees); break ;
                 case 3: reportEmployees(employees); break ;
                 case 4: reportEmployeesBySalary(employees); break ;
                 case 5: System.out.print("Quitting..."); return ;
+                default: System.out.println("You cannot be serious.....");
             }
         } while (true) ;
+    }
+
+    public static void displayMenu() {
+        System.out.println("1 - Add Employee");
+        System.out.println("2 - Delete Employee");
+        System.out.println("3 - Report Employees");
+        System.out.println("4 - Report Employees by Salary");
+        System.out.println("5 - Exit Program");
     }
 
     public static void addEmployee(ArrayList<Employee> employees) {

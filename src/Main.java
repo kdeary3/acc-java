@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Main {
@@ -21,7 +22,15 @@ public class Main {
             System.out.print("Enter menu choice: ");
             menuChoice = userInput.nextInt() ;
             switch (menuChoice) {
-                case 1: addEmployee(employees); break ;
+                case 1:
+                    addEmployee(employees);
+//                    Employee emp1 = new Parttime(1, "chris", "texas", 300, 200) ;
+//                    Employee emp2 = new Hourly(2, "paul", "los angeles", 200, 300, 200) ;
+//                    Employee emp3 = new Salaried(3, "keno", "austin", 300, 100000) ;
+//                    employees.add(emp1) ;
+//                    employees.add(emp2) ;
+//                    employees.add(emp3) ;
+                    break ;
                 case 2: deleteEmployee(employees); break ;
                 case 3: reportEmployees(employees); break ;
                 case 4: reportEmployeesBySalary(employees); break ;
@@ -32,7 +41,6 @@ public class Main {
 
     public static void addEmployee(ArrayList<Employee> employees) {
         Scanner userInput = new Scanner(System.in);
-        System.out.println("Add Employee: ");
 
         do {
             System.out.println("Enter an Employee type (salaried, hourly, parttime). 0 to exit.:");
@@ -76,6 +84,8 @@ public class Main {
                     hourlyRate = userInput.nextDouble();
                     Employee h = new Hourly(id, name, address, benefit, hours, hourlyRate) ;
                     employees.add(h) ;
+                    System.out.println("Enter an Employee type (salaried, hourly, parttime). 0 to exit.:");
+                    fullOrPart = userInput.nextLine();
                     break ;
                 case "parttime":
                     System.out.print("Enter Employee ID: ");
@@ -90,6 +100,8 @@ public class Main {
                     hourlyRate = userInput.nextDouble();
                     Employee p = new Parttime(id, name, address, hours, hourlyRate) ;
                     employees.add(p) ;
+                    System.out.println("Enter an Employee type (salaried, hourly, parttime). 0 to exit.:");
+                    fullOrPart = userInput.nextLine();
                     break ;
             }
         } while (true);
@@ -99,31 +111,66 @@ public class Main {
         Scanner userInput = new Scanner(System.in);
         System.out.println("Enter Employee ID to delete: ");
         int id = userInput.nextInt();
-        for (Employee employee : employees) {
-            if (employee.getId() == id) {
-                employees.remove(employee) ;
+        for (Employee e : employees) {
+            if (e.getId() == id) {
+                employees.remove(e) ;
+                break ;
             }
         }
     }
 
     public static void reportEmployees(ArrayList<Employee> employees) {
+        Scanner userInput = new Scanner(System.in);
+        System.out.println("Report all, salaried, hourly, or parttime: ");
+        String report = userInput.nextLine();
         for (Employee e : employees) {
-            System.out.println(e);
+            if (Objects.equals(report, "all")) System.out.println(e);
+            else if (Objects.equals(report, "salaried") && e instanceof Salaried) {
+                System.out.println(e);
+            }
+            else if (Objects.equals(report, "hourly") && e instanceof Hourly) {
+                System.out.println(e);
+            }
+            else if (Objects.equals(report, "parttime") && e instanceof Parttime) {
+                System.out.println(e);
+            }
         }
     }
 
     public static void reportEmployeesBySalary(ArrayList<Employee> employees) {
         Scanner userInput = new Scanner(System.in);
-        System.out.println("Enter a salary: ");
-        int amount = userInput.nextInt();
-//        for (Employee e : employees) {
-//            double pay = switch(e) {
-//                case Salaried ;
-//                case Hourly ;
-//                case Parttime ;
-//            }
+        System.out.println("Enter a $ amount: ");
+        double amount = userInput.nextDouble();
+        double hours = 0;
+        double hourlyRate = 0;
+        double benefit = 0;
+        double salary = 0;
+        for (Employee e : employees) {
+            if (e instanceof Salaried) {
+                salary = ((Salaried) e).getSalary();
+                benefit = ((Salaried) e).getBenefit() ;
+                if ((salary + benefit) >= amount) {
+                    System.out.println(e);
+                }
+            }
+            else if (e instanceof Hourly) {
+                hours = ((Hourly) e).getHours();
+                hourlyRate = ((Hourly) e).getHourlyRate();
+                benefit = ((Hourly) e).getBenefit() ;
+                if (((hours * hourlyRate) + benefit) >= amount) {
+                    System.out.println(e);
+                }
+            }
+            else if (e instanceof Parttime) {
+                hours = ((Parttime) e).getHours() ;
+                hourlyRate = ((Parttime) e).getHourlyRate() ;
+                if ((hours * hourlyRate) >= amount) {
+                    System.out.println(e);
+                }
+            }
         }
     }
+}
 
 
 class Employee {

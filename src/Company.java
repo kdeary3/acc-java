@@ -79,8 +79,6 @@ public class Company {
                     hourlyRate = userInput.nextDouble();
                     Employee h = new Hourly(id, name, address, benefit, hours, hourlyRate) ;
                     employees.add(h) ;
-                    System.out.println("Enter an Employee type (salaried, hourly, parttime). 0 to exit.:");
-                    fullOrPart = userInput.nextLine();
                     break ;
                 case "parttime":
                     System.out.print("Enter Employee ID: ");
@@ -95,8 +93,6 @@ public class Company {
                     hourlyRate = userInput.nextDouble();
                     Employee p = new Parttime(id, name, address, hours, hourlyRate) ;
                     employees.add(p) ;
-                    System.out.println("Enter an Employee type (salaried, hourly, parttime). 0 to exit.:");
-                    fullOrPart = userInput.nextLine();
                     break ;
             }
         } while (true);

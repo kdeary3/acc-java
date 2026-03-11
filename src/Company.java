@@ -24,12 +24,6 @@ public class Company {
             switch (menuChoice) {
                 case 1:
                     addEmployee(employees);
-//                    Employee emp1 = new Parttime(1, "chris", "texas", 300, 200) ;
-//                    Employee emp2 = new Hourly(2, "paul", "los angeles", 200, 300, 200) ;
-//                    Employee emp3 = new Salaried(3, "keno", "austin", 300, 100000) ;
-//                    employees.add(emp1) ;
-//                    employees.add(emp2) ;
-//                    employees.add(emp3) ;
                     break ;
                 case 2: deleteEmployee(employees); break ;
                 case 3: reportEmployees(employees); break ;

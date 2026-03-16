@@ -1,13 +1,15 @@
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Scanner;
 
 public class Company {
     public static void main(String[] args) {
-        display();
+        File file = new File("employees.txt");
+        display(file);
     }
 
-    public static void display() {
+    public static void display(File file) {
         Scanner userInput = new Scanner(System.in);
         ArrayList<Employee> employees = new ArrayList<>();
 
@@ -20,7 +22,9 @@ public class Company {
                 case 2: deleteEmployee(employees); break ;
                 case 3: reportEmployees(employees); break ;
                 case 4: reportEmployeesBySalary(employees); break ;
-                case 5: System.out.print("Quitting..."); return ;
+                case 5: writeToFile(employees, file); break ;
+                case 6: readToFile(file); break ;
+                case 7: System.out.print("Quitting..."); return ;
                 default: System.out.println("You cannot be serious.....");
             }
         } while (true) ;
@@ -31,7 +35,10 @@ public class Company {
         System.out.println("2 - Delete Employee");
         System.out.println("3 - Report Employees");
         System.out.println("4 - Report Employees by Salary");
-        System.out.println("5 - Exit Program");
+        System.out.println("5 - Write to File");
+        System.out.println("6 - Read File");
+        System.out.println("7 - Exit Program");
+
     }
 
     public static void addEmployee(ArrayList<Employee> employees) {
@@ -159,6 +166,35 @@ public class Company {
                     System.out.println(e);
                 }
             }
+        }
+    }
+
+    public static void writeToFile(ArrayList<Employee> employees, File file) {
+        try {
+            FileWriter fw = new FileWriter(file) ;
+            for (Employee e : employees) {
+                fw.write(e.toString() + "\n") ;
+            }
+            fw.close() ;
+        } catch (IOException e) {
+            System.out.println("Error writing to file") ;
+            e.printStackTrace() ;
+        }
+    }
+
+    public static void readToFile(File file) {
+        if (!file.exists()) {
+            System.out.println("File does not exist");
+            return;
+        }
+
+        try (Scanner fr = new Scanner(file)) {
+            while (fr.hasNextLine()) {
+                System.out.println(fr.nextLine()) ;
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found");
+            e.printStackTrace() ;
         }
     }
 }

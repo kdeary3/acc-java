@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.Scanner;
 
-public class Main {
+public class ReadWriteFiles {
 
     public static void main(String[] args) {
         File file = new File("input.txt");
@@ -24,8 +24,7 @@ public class Main {
     public static void readFile(File file) {
         try (Scanner fr = new Scanner(file)) {
             while (fr.hasNextLine()) {
-                String data = fr.nextLine();
-                System.out.println(data);
+                System.out.println(fr.nextLine());
             }
         } catch (FileNotFoundException e) {
             System.out.println("File not found");

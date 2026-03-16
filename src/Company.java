@@ -3,6 +3,9 @@ import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Scanner;
 
+import static java.lang.Double.parseDouble;
+import static java.lang.Integer.parseInt;
+
 public class Company {
     public static void main(String[] args) {
         File file = new File("employees.txt");
@@ -23,7 +26,7 @@ public class Company {
                 case 3: reportEmployees(employees); break ;
                 case 4: reportEmployeesBySalary(employees); break ;
                 case 5: writeToFile(employees, file); break ;
-                case 6: readToFile(file); break ;
+                case 6: readFile(employees, file); break ;
                 case 7: System.out.print("Quitting..."); return ;
                 default: System.out.println("You cannot be serious.....");
             }
@@ -182,20 +185,57 @@ public class Company {
         }
     }
 
-    public static void readToFile(File file) {
+    public static void readFile(ArrayList<Employee> employees, File file) {
         if (!file.exists()) {
             System.out.println("File does not exist");
             return;
         }
 
         try (Scanner fr = new Scanner(file)) {
+
             while (fr.hasNextLine()) {
                 System.out.println(fr.nextLine()) ;
+                String[] data = fr.nextLine().split(" ") ;
+
+                if (data[0].equals("Salaried")) {
+                    int id = parseInt(data[1].trim());
+                    String name = data[2].trim();
+                    String address = data[3].trim();
+                    int benefit = parseInt(data[4].trim());
+                    double salary = parseDouble(data[5].trim());
+
+                    Employee e = new Salaried(id, name, address, benefit, salary) ;
+                    employees.add(e) ;
+                }
+
+                if (data[0].equals("Hourly")) {
+                    int id = parseInt(data[1].trim());
+                    String name = data[2].trim();
+                    String address = data[3].trim();
+                    int benefit = parseInt(data[4].trim());
+                    int hours = parseInt(data[5].trim());
+                    double hourlyRate = parseDouble(data[6].trim());
+
+                    Employee e = new Hourly(id, name, address, benefit, hours, hourlyRate) ;
+                    employees.add(e) ;
+                }
+
+                if (data[0].equals("Parttime")) {
+                    int id = parseInt(data[1].trim());
+                    String name = data[2].trim();
+                    String address = data[3].trim();
+                    int hours = parseInt(data[4].trim());
+                    double hourlyRate = parseDouble(data[5].trim());
+
+                    Employee e = new Parttime(id, name, address, hours, hourlyRate) ;
+                    employees.add(e) ;
+                }
             }
         } catch (FileNotFoundException e) {
             System.out.println("File not found");
             e.printStackTrace() ;
         }
+
     }
 }
 
@@ -218,11 +258,9 @@ class Employee {
 
     @Override
     public String toString() {
-        return "Employee{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", address='" + address + '\'' +
-                '}';
+        return id + " " +
+                name + " " +
+                address;
     }
 
     public int getId() {
@@ -265,13 +303,9 @@ class Fulltime extends Employee {
 
     @Override
     public String toString() {
-        return "Fulltime{" +
-                "benefit=" + benefit +
-                ", id=" + id +
-                ", name='" + name + '\'' +
-                ", address='" + address + '\'' +
-                '}';
-    }
+        return super.toString() + " "
+                + benefit ;
+        }
 
     public double getBenefit() {
         return benefit;
@@ -299,13 +333,10 @@ class Parttime extends Employee {
 
     @Override
     public String toString() {
-        return "Parttime{" +
-                "hours=" + hours +
-                ", hourlyRate=" + hourlyRate +
-                ", id=" + id +
-                ", name='" + name + '\'' +
-                ", address='" + address + '\'' +
-                '}';
+        return "Parttime" + " " +
+                super.toString() + " "
+                + hours + " " +
+                hourlyRate ;
     }
 
     public double getHourlyRate() {
@@ -339,13 +370,9 @@ class Salaried extends Fulltime {
 
     @Override
     public String toString() {
-        return "Salaried{" +
-                "salary=" + salary +
-                ", benefit=" + benefit +
-                ", id=" + id +
-                ", name='" + name + '\'' +
-                ", address='" + address + '\'' +
-                '}';
+        return "Salaried" + " " +
+                super.toString() + " "
+                + salary;
     }
 
     public double getSalary() {
@@ -374,14 +401,10 @@ class Hourly extends Fulltime {
 
     @Override
     public String toString() {
-        return "Hourly{" +
-                "hours=" + hours +
-                ", hourlyRate=" + hourlyRate +
-                ", benefit=" + benefit +
-                ", id=" + id +
-                ", name='" + name + '\'' +
-                ", address='" + address + '\'' +
-                '}';
+        return "Hourly" + " " +
+                super.toString() + " "
+                + hours + " "
+                + hourlyRate;
     }
 
     public double getHours() {

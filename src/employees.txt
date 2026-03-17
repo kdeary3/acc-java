@@ -1,0 +1,6 @@
+Salaried 1 keno austin 500.0 110000.0
+Hourly 2 chris houston 0.0 1.0 15.0
+Parttime 3 bill seattle 15.0 15.0
+Salaried 1 keno austin 500.0 110000.0
+Hourly 2 chris houston 0.0 1.0 15.0
+Parttime 3 bill seattle 15.0 15.0

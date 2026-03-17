@@ -194,14 +194,13 @@ public class Company {
         try (Scanner fr = new Scanner(file)) {
 
             while (fr.hasNextLine()) {
-                System.out.println(fr.nextLine()) ;
                 String[] data = fr.nextLine().split(" ") ;
 
                 if (data[0].equals("Salaried")) {
                     int id = parseInt(data[1].trim());
                     String name = data[2].trim();
                     String address = data[3].trim();
-                    int benefit = parseInt(data[4].trim());
+                    double benefit = parseDouble(data[4].trim());
                     double salary = parseDouble(data[5].trim());
 
                     Employee e = new Salaried(id, name, address, benefit, salary) ;
@@ -212,8 +211,8 @@ public class Company {
                     int id = parseInt(data[1].trim());
                     String name = data[2].trim();
                     String address = data[3].trim();
-                    int benefit = parseInt(data[4].trim());
-                    int hours = parseInt(data[5].trim());
+                    double benefit = parseDouble(data[4].trim());
+                    double hours = parseDouble(data[5].trim());
                     double hourlyRate = parseDouble(data[6].trim());
 
                     Employee e = new Hourly(id, name, address, benefit, hours, hourlyRate) ;
@@ -224,7 +223,7 @@ public class Company {
                     int id = parseInt(data[1].trim());
                     String name = data[2].trim();
                     String address = data[3].trim();
-                    int hours = parseInt(data[4].trim());
+                    double hours = parseDouble(data[5].trim());
                     double hourlyRate = parseDouble(data[5].trim());
 
                     Employee e = new Parttime(id, name, address, hours, hourlyRate) ;

@@ -1,6 +1,4 @@
-import java.io.IOException;
-
-public class Main {
+public class Exceptions {
 
     public static void main(String[] args) {
 

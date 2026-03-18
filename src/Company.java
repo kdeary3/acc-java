@@ -50,7 +50,7 @@ public class Company {
         do {
             System.out.println("Enter an Employee type (salaried, hourly, parttime). 0 to exit.:");
             String fullOrPart = userInput.nextLine();
-            int id = 0 ;
+            int id;
             String name ;
             String address ;
             double benefit ;
@@ -142,10 +142,10 @@ public class Company {
         Scanner userInput = new Scanner(System.in);
         System.out.println("Enter a $ amount: ");
         double amount = userInput.nextDouble();
-        double hours = 0;
-        double hourlyRate = 0;
-        double benefit = 0;
-        double salary = 0;
+        double hours;
+        double hourlyRate;
+        double benefit;
+        double salary;
         for (Employee e : employees) {
             if (e instanceof Salaried) {
                 salary = ((Salaried) e).getSalary();
@@ -191,6 +191,8 @@ public class Company {
             return;
         }
 
+        employees.clear() ;
+
         try (Scanner fr = new Scanner(file)) {
 
             while (fr.hasNextLine()) {
@@ -234,7 +236,6 @@ public class Company {
             System.out.println("File not found");
             e.printStackTrace() ;
         }
-
     }
 }
 

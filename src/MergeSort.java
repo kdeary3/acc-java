@@ -1,64 +1,61 @@
 public class MergeSort {
     public static void main(String[] args) {
 
-        int[] array = {20,19,18,17,16,15,14,13,12,11,10,9,8,7,6,5,4,3,2,1};
-        mergeSort(array, 0, array.length - 1) ;
+        int[] x = {3, 10, 5,4,20,17,14,12};
+        mergeSort(x,0,x.length-1);
 
-        for (int num : array) {
-            System.out.print(num + " ");
+        for (int i : x) {
+            System.out.println(i);
         }
     }
 
-    public static void mergeSort(int[] array, int low, int high) {
-        if (low >= high) return ;
 
-        int midpoint = low + (high - low) / 2 ;
-        mergeSort(array, low, midpoint) ;
-        mergeSort(array, midpoint+1, high) ;
-        merge(array, low, midpoint, high) ;
+    public static void mergeSort(int[] arr, int low, int high){
+        if(low >= high)
+            return ;
+
+        int mid = low + (high-low)/2;
+        mergeSort(arr,low,mid);
+        mergeSort(arr,mid+1,high);
+        merge(arr,low,mid,high);
     }
 
-    public static void merge(int[] array, int low, int mid, int high) {
+    public static void merge(int[] arr, int low, int mid, int high){
 
-        int sizeLeft = mid-low+1 ;
-        int sizeRight = high-mid+1 ;
-        int combined = sizeLeft + sizeRight ;
+        int size1 = mid-low+1 ;
+        int size2 = high - mid ;
+        int size3 = size1 + size2;
 
-        int[] leftArray = new int[sizeLeft];
-        int[] rightArray = new int[sizeRight];
-        int[] combinedArray = new int[combined];
+        int[] arr1 = new int[size1];
+        int[] arr2 = new int[size2];
+        int[] arr3 = new int[size3];
 
-        for (int i = 0; i <= sizeLeft; i++) {
-            leftArray[i] = array[low+i];
-        }
+        for(int i=0 ;i<size1;i++)
+            arr1[i] = arr[low+i];
 
-        for (int i = 0; i <= sizeRight; i++) {
-            rightArray[i] = array[mid+i+1];
-        }
+        for(int i=0; i<size2;i++)
+            arr2[i]=arr[mid+i+1];
+        int x = 0;
 
-        int i = 0 ;
-        int j = 0 ;
-        int k = 0 ;
 
-        while ( (i < leftArray.length) && (j < rightArray.length) ) {
-            if (leftArray[i] < rightArray[j]) {
-                combinedArray[k++] = leftArray[i++];
-            } else {
-                combinedArray[k++] = rightArray[j++];
-            }
-        }
+        int i=0;
+        int j=0;
+        int k=0;
+        while((i<arr1.length)&&(j<arr2.length))
+            if(arr1[i]< arr2[j])
+                arr3[k++] = arr1[i++];
+            else
+                arr3[k++] = arr2[j++] ;
 
-        while (i < leftArray.length) {
-            combinedArray[k++] = leftArray[i++];
-        }
+        while(i<arr1.length)
+            arr3[k++] = arr1[i++];
 
-        while (j < rightArray.length) {
-            combinedArray[k++] = rightArray[j++];
-        }
+        while(j<arr2.length)
+            arr3[k++] = arr2[j++] ;
 
-        for ( i = 0 ; i < combined ; i++) {
-            array[low + i] = combinedArray[i];
-        }
+
+        for(i=0 ; i<size3;i++)
+            arr[low+i] = arr3[i];
 
     }
 }

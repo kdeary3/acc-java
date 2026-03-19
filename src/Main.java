@@ -42,7 +42,14 @@ public class Main {
     }
 
     public static void addVehicle(ArrayList<Vehicle> vehicles) {
+
+        if (vehicles.size() >= 50) {
+            System.out.println("There are already 50 vehicles.");
+            return;
+        }
+
         Scanner userInput = new Scanner(System.in);
+
         System.out.println("Enter vehicle type (motorcycle, truck, suv, electric, gas or hybrid): ");
         String addVehicleType = userInput.nextLine();
 
@@ -158,21 +165,24 @@ public class Main {
     }
 
     public static void displayByOrderedLowestToHighest(ArrayList<Vehicle> vehicles) {
-        mergeSort(vehicles, 0, vehicles.size() - 1) ;
+        ArrayList<Vehicle> sortedVehicles = new ArrayList<>(vehicles);
+
+        mergeSort(sortedVehicles, 0, sortedVehicles.size() - 1);
+
+        for (Vehicle vehicle : sortedVehicles) {
+            System.out.println(vehicle);
+        }
     }
 
-    public static void mergeSort(ArrayList<Vehicle> vehicles, int low, int high){
-        ArrayList<Vehicle> orderedVehicles = new ArrayList<>(vehicles) ;
+    public static void mergeSort(ArrayList<Vehicle> vehicles, int low, int high) {
+        if (low >= high) return;
 
-        if(low >= high)
-            return ;
+        int mid = low + (high - low) / 2;
 
-        int mid = low + (high-low)/2;
-        mergeSort(orderedVehicles,low,mid);
-        mergeSort(orderedVehicles,mid+1,high);
-        merge(orderedVehicles,low,mid,high);
+        mergeSort(vehicles, low, mid);
+        mergeSort(vehicles, mid + 1, high);
 
-        System.out.println(orderedVehicles);
+        merge(vehicles, low, mid, high);
     }
 
     public static void merge(ArrayList<Vehicle> vehicles, int low, int mid, int high) {
@@ -260,7 +270,7 @@ public class Main {
 
         try ( Scanner fr = new Scanner(vehicleRecords) ) {
 
-            while (fr.hasNextLine() && vehicles.size() <= 50) {
+            while (fr.hasNextLine() && vehicles.size() < 50) {
                 String[] vicData = fr.nextLine().split(" ") ;
 
                 String vin = vicData[1].trim();

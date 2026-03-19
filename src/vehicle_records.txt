@@ -1,6 +1,50 @@
-Salaried 1 keno austin 500.0 110000.0
-Hourly 2 chris houston 0.0 1.0 15.0
-Parttime 3 bill seattle 15.0 15.0
-Salaried 1 keno austin 500.0 110000.0
-Hourly 2 chris houston 0.0 1.0 15.0
-Parttime 3 bill seattle 15.0 15.0
+Motorcycle VIN001 Honda 12500.00 155
+Truck VIN002 Ford 45000.00 12000
+SUV VIN003 Toyota 35000.00 7
+ElectricCar VIN004 Tesla 55000.00 330
+GasCar VIN005 BMW 48000.00 300
+HybridCar VIN006 Prius 28000.00 52
+Motorcycle VIN007 Yamaha 9000.00 140
+Truck VIN008 Chevy 42000.00 11000
+SUV VIN009 Honda 32000.00 5
+ElectricCar VIN010 Rivian 75000.00 310
+GasCar VIN011 Audi 52000.00 330
+HybridCar VIN012 Hyundai 29000.00 50
+Motorcycle VIN013 Ducati 18000.00 180
+Truck VIN014 RAM 50000.00 15000
+SUV VIN015 Kia 31000.00 8
+ElectricCar VIN016 Lucid 90000.00 400
+GasCar VIN017 Mercedes 60000.00 400
+HybridCar VIN018 Ford 32000.00 42
+Motorcycle VIN019 Kawasaki 8500.00 130
+Truck VIN020 GMC 48000.00 13000
+SUV VIN021 Mazda 29000.00 5
+ElectricCar VIN022 Nissan 30000.00 220
+GasCar VIN023 Lexus 45000.00 270
+HybridCar VIN024 Honda 31000.00 48
+Motorcycle VIN025 Suzuki 7500.00 120
+Truck VIN026 Toyota 40000.00 10000
+SUV VIN027 Volvo 55000.00 7
+ElectricCar VIN028 Porsche 105000.00 250
+GasCar VIN029 Dodge 35000.00 350
+HybridCar VIN030 Kia 27000.00 45
+Motorcycle VIN031 Triumph 12000.00 145
+Truck VIN032 Nissan 38000.00 9500
+SUV VIN033 Subaru 33000.00 5
+ElectricCar VIN034 Polestar 50000.00 270
+GasCar VIN035 Cadillac 65000.00 420
+HybridCar VIN036 Toyota 34000.00 40
+Motorcycle VIN037 BMW 15000.00 160
+Truck VIN038 Jeep 43000.00 7000
+SUV VIN039 Lincoln 60000.00 7
+ElectricCar VIN040 Audi 70000.00 240
+GasCar VIN041 Jaguar 72000.00 380
+HybridCar VIN042 Lexus 48000.00 38
+Motorcycle VIN043 Harley 22000.00 110
+Truck VIN044 Ford 85000.00 18000
+SUV VIN045 Volkswagen 34000.00 7
+ElectricCar VIN046 Hyundai 45000.00 260
+GasCar VIN047 Chevrolet 30000.00 280
+HybridCar VIN048 Chrysler 40000.00 32
+Motorcycle VIN049 KTM 11000.00 150
+Truck VIN050 Freightliner 120000.00 30000

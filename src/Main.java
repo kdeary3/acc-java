@@ -317,7 +317,7 @@ public class Main {
     }
 }
 
-class Vehicle {
+abstract class Vehicle {
     protected String vin ;
     protected String make ;
     protected double price ;

@@ -2,7 +2,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Main {
+public class VehicleProgram {
 
     public static void main(String[] args) {
         ArrayList<Vehicle> vehicles = new ArrayList<>();
@@ -317,7 +317,7 @@ public class Main {
     }
 }
 
-class Vehicle {
+abstract class Vehicle {
     protected String vin ;
     protected String make ;
     protected double price ;

@@ -2,7 +2,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Main {
+public class VehicleProgram {
 
     public static void main(String[] args) {
         ArrayList<Vehicle> vehicles = new ArrayList<>();

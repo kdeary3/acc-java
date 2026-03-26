@@ -29,5 +29,6 @@ public class CoinChangeProblem {
             }
             System.out.println();
         }
+        System.out.println(table[coins.length - 1][number]);
     }
 }

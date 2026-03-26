@@ -3,7 +3,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class VehicleProgram {
-
     public static void main(String[] args) {
         ArrayList<Vehicle> vehicles = new ArrayList<>();
         File vehicleRecords = new File("vehicle_records.txt");

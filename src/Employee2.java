@@ -34,7 +34,6 @@ public class Employee2 implements Comparable<Employee2>{
 
     @Override
     public int compareTo(Employee2 o) {
-        if (this.a == o.a && this.b == o.b) return 0;
-        return 1 ;
+        return a - o.a ;
     }
 }

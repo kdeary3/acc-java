@@ -1,27 +1,40 @@
-public class Employee2 {
+public class Employee2 implements Comparable<Employee2>{
 
-    private String name ;
-    private double salary ;
-    private String eid ;
+    private int a ;
+    private double b ;
 
-    // Setter
-    // constructor (Employee) has to be the same name as the class.
-    public Employee2(String name, double salary, String eid) {
-        this.name = name ;
-        this.salary = salary ;
-        this.eid = eid ;
+    public Employee2(int a, double b) {
+        this.a = a;
+        this.b = b;
     }
 
-    // Getters
-    public String getName() {
-        return name ;
+    public int getA() {
+        return a;
     }
 
-    public double getSalary() {
-        return salary ;
+    public void setA(int a) {
+        this.a = a;
     }
 
-    public String getEid() {
-        return eid ;
+    public double getB() {
+        return b;
+    }
+
+    public void setB(double b) {
+        this.b = b;
+    }
+
+    @Override
+    public String toString() {
+        return "Employee2{" +
+                "a=" + a +
+                ", b=" + b +
+                '}';
+    }
+
+    @Override
+    public int compareTo(Employee2 o) {
+        if (this.a == o.a && this.b == o.b) return 0;
+        return 1 ;
     }
 }

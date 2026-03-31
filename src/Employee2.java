@@ -1,39 +1,37 @@
-public class Employee2 implements Comparable<Employee2>{
+public class Employee2 implements Comparable<Employee2> {
 
-    private int a ;
-    private double b ;
+    private int years;
+    private double salary;
+    private double totalComp;
 
-    public Employee2(int a, double b) {
-        this.a = a;
-        this.b = b;
+    public Employee2(int years, double salary) {
+        this.years = years;
+        this.salary = salary;
+        this.totalComp = years * salary;
     }
 
-    public int getA() {
-        return a;
-    }
+    public int getYears() { return years; }
+    public void setYears(int years) { this.years = years; }
 
-    public void setA(int a) {
-        this.a = a;
-    }
+    public double getSalary() { return salary; }
+    public void setSalary(double salary) { this.salary = salary; }
 
-    public double getB() {
-        return b;
+    public double getTotalComp() {
+        return totalComp;
     }
-
-    public void setB(double b) {
-        this.b = b;
+    public void setTotalComp(double totalComp) {
+        this.totalComp = totalComp;
     }
 
     @Override
     public String toString() {
         return "Employee2{" +
-                "a=" + a +
-                ", b=" + b +
-                '}';
+                "totalComp=" + (years * salary) +
+                " (" + years + ", " + salary + ")}";
     }
 
     @Override
     public int compareTo(Employee2 o) {
-        return a - o.a ;
+        return Double.compare(this.totalComp, o.totalComp);
     }
 }

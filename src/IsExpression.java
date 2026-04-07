@@ -1,6 +1,6 @@
 import java.util.Stack;
 
-public class Main {
+public class IsExpression {
     public static void main(String[] args) {
 
         String expression = "([ a + {b * c} ] * d)";

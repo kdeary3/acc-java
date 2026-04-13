@@ -1,43 +1,56 @@
-public class Node {
-    private int data;
-    private Node next;
+public class TreeNode {
+    public int data;
+    public TreeNode right;
+    public TreeNode left;
 
-    public Node() {
+    public TreeNode() {
         this.data = 0;
-        this.next = null;
+        this.right = null;
+        this.left = null;
     }
 
-    public Node(int data, Node next) {
+    public TreeNode(int data, TreeNode right, TreeNode left) {
         this.data = data;
-        this.next = next;
+        this.right = right;
+        this.left = left;
     }
 
-    public Node(int data) {
+    public TreeNode(int data) {
         this.data = data;
-        this.next = null;
+        this.right = null;
+        this.left = null;
     }
 
     public int getData() {
         return data;
     }
 
+    public TreeNode getLeft() {
+        return left;
+    }
+
+    public TreeNode getRight() {
+        return right;
+    }
+
     public void setData(int data) {
         this.data = data;
     }
 
-    public Node getNext() {
-        return next;
+    public void setRight(TreeNode right) {
+        this.right = right;
     }
 
-    public void setNext(Node next) {
-        this.next = next;
+    public void setLeft(TreeNode left) {
+        this.left = left;
     }
 
     @Override
     public String toString() {
-        return "Node{" +
+        return "TreeNode{" +
                 "data=" + data +
-                ", next=" + next +
+                ", right=" + right +
+                ", left=" + left +
                 '}';
     }
 }

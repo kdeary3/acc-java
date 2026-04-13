@@ -2,7 +2,7 @@
 public class GenericStack<T> {
     private T[] stackArray;
     private int top;
-    private int capacity;
+    public int capacity;
 
     public GenericStack(int size) {
         this.capacity = size;

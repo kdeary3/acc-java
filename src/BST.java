@@ -171,44 +171,38 @@ public class BST {
         }
     }
 
-    public void delete(int data) {
-        if (root == null) return;
-        if (search(data) == false) {
-            System.out.println("Node not found");
-            return;
+    public void delete(int data){
+        root = deleteNode(root,data);
+    }
+
+    TreeNode deleteNode(TreeNode root, int data) {
+        if (root == null)
+            return null;
+
+        if (data < root.data)
+            root.left = deleteNode(root.left, data);
+        else if (data > root.data)
+            root.right = deleteNode(root.right, data);
+        else {
+            // Node with one or no child
+            if (root.left == null)
+                return root.right;
+            else if (root.right == null)
+                return root.left;
+            // Node with two children: Get the inorder successor (smallest in the right subtree)
+            root.data = minValue(root.right);
+            // Delete the inorder successor
+            root.right = deleteNode(root.right, root.data);
         }
-
-        TreeNode ptr = root;
-        TreeNode prev = null;
-
-        while (ptr != null) {
-            if (data == ptr.getData()) break;
-
-            if (data > ptr.getData()) {
-                prev = ptr;
-                ptr = ptr.getRight();
-            } else {
-                prev = ptr;
-                ptr = ptr.getLeft();
-            }
+        return root;
+    }
+    int minValue(TreeNode node) {
+        int minv = node.data;
+        while (node.left != null) {
+            minv = node.left.data;
+            node = node.left;
         }
-
-        if (ptr.getData() == root) {
-
-        }
-
-        if (ptr.getLeft() == null && ptr.getRight() == null) {
-            if (prev.getLeft().getData() == data) {
-                ptr.setLeft(null);
-                return;
-            } else {
-                ptr.setRight(null);
-                return;
-            }
-        }
-        if ((ptr.getRight() != null && ptr.getLeft() != null) || (ptr.getLeft() == null && ptr.getRight() != null)) {
-            prev.setLeft(ptr.getRight());
-        }
+        return minv;
     }
 
     @Override

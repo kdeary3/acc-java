@@ -1,4 +1,5 @@
-import java.sql.SQLOutput;
+import java.util.ArrayList;
+import java.util.List;
 
 public class BST {
 
@@ -27,9 +28,11 @@ public class BST {
         bstRec.addNodeRecursive(345);
         bstRec.addNodeRecursive(4434);
 
-        bstRec.inOrderPrint(bstRec.getRoot());
 //        System.out.println(bstRec.search(1234));
-        System.out.println(bstRec.searchRecursive(bstRec.getRoot(), 1234));
+//        System.out.println(bstRec.searchRecursive(bstRec.getRoot(), 1234));
+
+        System.out.println(bstRec.isBST());
+        System.out.println(bstRec.findClosest(1233));
 
     }
 
@@ -196,6 +199,7 @@ public class BST {
         }
         return root;
     }
+
     int minValue(TreeNode node) {
         int minv = node.data;
         while (node.left != null) {
@@ -203,6 +207,47 @@ public class BST {
             node = node.left;
         }
         return minv;
+    }
+
+    public boolean isBST() {
+        List<Integer> list = new ArrayList<>();
+        inOrderCollect(root, list);
+
+        for (int i = 0; i < list.size() - 1; i++) {
+            if (list.get(i) >= list.get(i + 1)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public int findClosest(int target) {
+        if (root == null) {
+            System.out.println("Tree is empty");
+            return -1;
+        }
+
+        List<Integer> list = new ArrayList<>();
+        inOrderCollect(root, list);
+
+        int closest = list.get(0);
+        for (int value : list) {
+            if (Math.abs(target - value) < Math.abs(target - closest)) {
+                closest = value;
+            }
+
+            if (value > target && Math.abs(target - value) > Math.abs(target - closest)) {
+                break;
+            }
+        }
+        return closest;
+    }
+
+    private void inOrderCollect(TreeNode node, List<Integer> list) {
+        if (node == null) return;
+        inOrderCollect(node.left, list);
+        list.add(node.getData());
+        inOrderCollect(node.right, list);
     }
 
     @Override
